@@ -1,0 +1,25 @@
+{
+  "name": "cypress-timeout-plugin",
+  "version": "1.0.0",
+  "description": "A plugin for Cypress to optimize tests with frequently changing UI elements and API requests through automatic timeout management.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diosa34/cypress-timeout-plugin.git"
+  },
+  "keywords": [
+    "plugin"
+  ],
+  "author": "Osokina Maria Yurievna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Diosa34/cypress-timeout-plugin/issues"
+  },
+  "homepage": "https://github.com/Diosa34/cypress-timeout-plugin#readme",
+  "devDependencies": {
+    "cypress": "^14.2.0"
+  }
+}
