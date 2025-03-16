@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Diosa34/cypress-timeout-plugin#readme",
   "devDependencies": {
-    "cypress": "^14.2.0"
+    "cypress": "^14.2.0",
+    "typescript": "^5.8.2"
   }
 }

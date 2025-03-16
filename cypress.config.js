@@ -10,4 +10,9 @@ module.exports = defineConfig({
       specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
       baseUrl: 'https://www.google.com/',
   },
+    env: {
+        currentStand: 'https://se.ifmo.ru',
+        SCANNED_SPECS: 'cypress/e2e/custom-log-tests.js',
+        LOCATORS: ['CLLoc.elem.task', 'CLLoc.elem.table']
+    },
 });
