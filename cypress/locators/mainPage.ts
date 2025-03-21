@@ -1,4 +1,4 @@
-export const CarListLocators = {
+export const MainLocators: Locators = {
     url: "/",
     elem: {
         title: '[class="sub_name"]',
