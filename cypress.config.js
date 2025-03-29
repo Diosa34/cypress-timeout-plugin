@@ -12,7 +12,7 @@ module.exports = defineConfig({
   },
     env: {
         currentStand: 'https://se.ifmo.ru',
-        SCANNED_SPECS: 'cypress/e2e/custom-log-tests.js',
-        LOCATORS: ['CLLoc.elem.task', 'CLLoc.elem.table']
+        SCANNED_SPECS: 'cypress/e2e/custom-log-tests.ts',
+        LOCATORS: ['MLLoc.elem.task', 'MLLoc.elem.table']
     },
 });

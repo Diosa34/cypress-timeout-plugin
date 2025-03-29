@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "strictNullChecks": true,
+    "target": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "types": ["cypress", "node"],
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
   },
-  "include": ["**/*.ts"]
+  "include": ["cypress/**/*.ts"],
+  "exclude": [],
 }
