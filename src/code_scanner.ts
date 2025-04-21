@@ -1,5 +1,6 @@
+import {Locator, LocEntry, SpecItem} from "./types/locators";
+
 const fs = require('fs');
-const searchStrings = ['MLLoc.elem.task', 'MLLoc.elem.table', 'abs'];
 const filePath = '../cypress/e2e/custom-log-tests.ts';
 
 /*
@@ -7,16 +8,13 @@ const filePath = '../cypress/e2e/custom-log-tests.ts';
 затем проходит по списку и ищет вхождение каждого из локаторов в каждой строке.
 Функция поддерживает несколько вхождений локатора в одну строку.
 */
-function codeScanner() {
+function codeScanner(locatorsSpec: SpecItem[]): Locator[]  {
     try {
         const data = fs.readFileSync(filePath, 'utf-8');
         const lines = data.split('\n');
-        const occurrences = {};
+        const occurrences: Locator[] = [];
         let currentTimeout = 4000;
         let waitTime = 0;
-        const locatorsWithMeta = [];
-
-        searchStrings.forEach(str => occurrences[str] = []);
 
         lines.forEach((line, index) => {
             if (line.trim().startsWith('describe(')) {
@@ -38,33 +36,32 @@ function codeScanner() {
                 waitTime += parseInt(waitMatch[1], 10);
             }
 
-            searchStrings.forEach(str => {
-                let position = line.indexOf(str);
+            locatorsSpec.forEach(spec => {
+                let position = line.indexOf(spec.path);
                 while (position !== -1) {
-                    console.log("Wait: ", waitTime);
                     const effectiveTimeout = currentTimeout + waitTime;
                     waitTime = 0;
-                    occurrences[str].push({ lineNumber: index + 1, startPosition: position + 1, timeout: effectiveTimeout });
-                    position = line.indexOf(str, position + 1);
+                    const entry: LocEntry = {
+                        line: index + 1,
+                        position: position + 1,
+                        realTimeout: effectiveTimeout,
+                        specTimeout: spec.value,
+                    }
+
+                    const existingLocator = occurrences.find(loc => loc.name === spec.path)
+                    if (existingLocator) {
+                        existingLocator.entries.push(entry);
+                    } else {
+                        occurrences.push({
+                            name: spec.path,
+                            entries: [entry],})
+                    }
                 }
             });
         });
 
-        for (const str of searchStrings) {
-            if (occurrences[str].length > 0) {
-                console.log(`Строка "${str}" найдена:`);
-                occurrences[str].forEach(occurrence => {
-                    console.log(` - Номер строки: ${occurrence.lineNumber}, 
-                    Позиция начала: ${occurrence.startPosition}, Таймаут: ${occurrence.timeout}ms`);
-                });
-            } else {
-                console.log(`Строка "${str}" не найдена.`);
-            }
-        }
-
+        return occurrences;
     } catch (error) {
         console.error(`Ошибка при чтении файла: ${error.message}`);
     }
 }
-
-codeScanner();

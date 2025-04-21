@@ -1,16 +1,13 @@
-import { MainLocators } from "../cypress/locators/mainPage";
+import { MainLocators } from "../cypress/spec/mainPage";
+import {SpecItem} from "./types/locators";
 
 /*
 Функция принимает структуру с перечнем локаторов
-и возвращает список объектов, где каждый объект содержит путь к локатору и его значение.
+и возвращает список объектов, где каждый объект содержит путь к локатору и значение его таймаута, описанное в спецификации.
 */
-interface LocatorResult {
-    path: string;
-    value: number;
-}
 
-function parseLocators(obj: any): LocatorResult[] {
-    const result: LocatorResult[] = [];
+function parseLocators(obj: any): SpecItem[] {
+    const result: SpecItem[] = [];
     const stack: [any, string][] = [[obj, '']];
 
     while (stack.length > 0) {

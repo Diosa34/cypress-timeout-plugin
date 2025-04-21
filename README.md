@@ -1,2 +1,7 @@
 # cypress-timeout-plugin
-A plugin for Cypress to optimize tests with frequently changing UI elements and API requests through automatic timeout management.
+Плагин для Cypress для оптимизации тестов с часто меняющимися элементами пользовательского интерфейса и запросами API за счет автоматического управления тайм-аутом.
+
+В проекте имеется несколько файлов с описанием локаторов, а также соответствующих им файлов описания спецификации таймаутов.
+
+
+
