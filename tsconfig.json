@@ -1,12 +1,18 @@
 {
+  "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
     "strictNullChecks": true,
     "target": "ES2022",
     "lib": ["ES2022", "dom"],
     "types": ["cypress", "node"],
     "esModuleInterop": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "resolveJsonModule": true,
   },
-  "include": ["cypress/**/*.ts"],
-  "exclude": [],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["cypress/**/*.ts", "src/**/*.ts"],
 }

@@ -5,7 +5,7 @@ import * as fs from "fs";
 Функция записывает в файл результаты валидации таймаутов в коде тестов.
 @data — список локаторов с метаинформацией
 */
-function generateReport(data: Locator[]): void {
+export function generateReport(data: Locator[]): void {
     const fileStream = fs.createWriteStream('output.txt');
 
     for (const loc of data) {

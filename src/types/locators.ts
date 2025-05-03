@@ -1,4 +1,11 @@
 /*
+Описание структуры спецификации.
+ */
+export interface LocSpec {
+    [key: string]: number | string;
+}
+
+/*
 Описание локатора.
  */
 export interface Locator {

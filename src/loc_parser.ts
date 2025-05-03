@@ -1,14 +1,13 @@
-import { MainLocators } from "../cypress/spec/mainPage";
 import {SpecItem} from "./types/locators";
+import {MainLocators} from "../cypress/spec/mainPage";
 
 /*
-Функция принимает структуру с перечнем локаторов
+Функция принимает структуру с перечнем локаторов (т.е. спецификацию)
 и возвращает список объектов, где каждый объект содержит путь к локатору и значение его таймаута, описанное в спецификации.
 */
-
-function parseLocators(obj: any): SpecItem[] {
+export function parseLocators(spec: any, abbreviation: string): SpecItem[] {
     const result: SpecItem[] = [];
-    const stack: [any, string][] = [[obj, '']];
+    const stack: [any, string][] = [[spec, '']];
 
     while (stack.length > 0) {
         const [currentObj, parentKey] = stack.pop()!;
@@ -29,6 +28,3 @@ function parseLocators(obj: any): SpecItem[] {
 
     return result;
 }
-
-const result = parseLocators(MainLocators);
-console.log(result);
