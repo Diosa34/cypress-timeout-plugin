@@ -6,8 +6,8 @@
     "lib": ["ES2022", "dom"],
     "types": ["cypress", "node"],
     "esModuleInterop": true,
-    "moduleResolution": "Node",
-    "module": "ESNext",
+    "moduleResolution": "Node16",
+    "module": "Node16",
     "resolveJsonModule": true,
   },
   "ts-node": {

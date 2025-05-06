@@ -1,6 +1,6 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from 'cypress';
 
-module.exports = defineConfig({
+export default defineConfig({
   viewportWidth: 1920,
   viewportHeight: 1000,
   e2e: {
@@ -11,7 +11,7 @@ module.exports = defineConfig({
       baseUrl: 'https://www.google.com/',
   },
     env: {
-        currentStand: 'https://se.ifmo.ru',
+        currentStand: 'https://se.ifmo.ru/',
         SCANNED_SPECS: 'cypress/e2e/custom-log-tests.ts',
         LOCATORS: ['MLLoc.elem.task', 'MLLoc.elem.table']
     },
