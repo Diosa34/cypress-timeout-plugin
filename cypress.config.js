@@ -1,18 +1,20 @@
-import { defineConfig } from 'cypress';
+const { defineConfig } = require("cypress");
+const {runPlugin} = require("./src/index.js");
 
-export default defineConfig({
-  viewportWidth: 1920,
-  viewportHeight: 1000,
-  e2e: {
-      setupNodeEvents(on, config) {
-        // implement node event listeners here
+module.exports = defineConfig({
+    viewportWidth: 1920,
+    viewportHeight: 1000,
+    e2e: {
+      setupNodeEvents(on, _) {
+          on('before:run', (_) => {
+              runPlugin();
+          });
       },
       specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
-      baseUrl: 'https://www.google.com/',
-  },
+    },
     env: {
-        currentStand: 'https://se.ifmo.ru/',
-        SCANNED_SPECS: 'cypress/e2e/custom-log-tests.ts',
-        LOCATORS: ['MLLoc.elem.task', 'MLLoc.elem.table']
+        CURRENT_STAND: 'https://se.ifmo.ru/',
+        TESTS_DIRECTORY_PATH: 'C:/Users/Diosa/IdeaProjects/cypress-timeout-plugin/cypress/e2e',
+        LOC_DIRECTORY_PATH: 'C:/Users/Diosa/IdeaProjects/cypress-timeout-plugin/cypress/spec',
     },
 });

@@ -2,10 +2,10 @@ import {Locator, LocEntry, SpecItem} from "./types/locators";
 import * as fs from "fs";
 import {Block} from "./types/code_parsing";
 
-/*
-Функция читает файл кода тестов и сохраняет содержимое как список строк,
-затем проходит по списку и ищет вхождение каждого из локаторов в каждой строке.
-Функция поддерживает несколько вхождений локатора в одну строку.
+/**
+ * Функция читает файл кода тестов и сохраняет содержимое как список строк,
+ * затем проходит по списку и ищет вхождение каждого из локаторов в каждой строке.
+ * Функция поддерживает несколько вхождений локатора в одну строку.
 */
 export function codeScanner(filePath: string, locatorsSpec: SpecItem[]): Locator[]  {
     const data = fs.readFileSync(filePath, 'utf-8');

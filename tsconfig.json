@@ -8,11 +8,11 @@
     "esModuleInterop": true,
     "moduleResolution": "Node16",
     "module": "Node16",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
   },
-  "include": ["cypress/**/*.ts", "src/**/*.ts"],
+  "include": ["cypress/**/*.ts", "src/**/*.ts"]
 }

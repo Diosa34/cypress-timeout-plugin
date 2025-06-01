@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open",
-    "run-plugin": "node --trace-warnings --loader ts-node/esm src/index.ts"
+    "run-plugin": "node --loader=ts-node/esm src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,11 @@
   },
   "homepage": "https://github.com/Diosa34/cypress-timeout-plugin#readme",
   "dependencies": {
-    "cypress": "^14.3.2"
+    "@babel/generator": "^7.27.1",
+    "@babel/parser": "^7.27.2",
+    "@babel/traverse": "^7.27.1",
+    "cypress": "^14.3.2",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.3",
